@@ -1,0 +1,153 @@
+.footer {
+  padding: 65px 7% 22px;
+  background: #060810;
+  color: #f5f7ff;
+  border-top: 1px solid rgba(167, 139, 250, 0.15);
+}
+
+.footer-container {
+  max-width: 1150px;
+  margin: 0 auto;
+}
+
+.footer-main {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 45px;
+  padding-bottom: 45px;
+}
+
+.footer-logo {
+  display: inline-block;
+  margin-bottom: 16px;
+  color: #f5f7ff;
+  font-size: 34px;
+  font-weight: 800;
+  letter-spacing: -1.5px;
+  text-decoration: none;
+}
+
+.footer-logo span {
+  color: #a78bfa;
+}
+
+.footer-brand p {
+  color: #9ca3b5;
+  font-size: 13px;
+  line-height: 1.9;
+}
+
+.footer-navigation h3,
+.footer-social h3 {
+  margin: 7px 0 20px;
+  font-size: 15px;
+}
+
+.footer-navigation nav {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.footer-navigation nav a,
+.footer-email {
+  color: #9ca3b5;
+  font-size: 13px;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-navigation nav a:hover,
+.footer-email:hover {
+  color: #c4b5fd;
+}
+
+.footer-social-links {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.footer-social-links a {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid #292f43;
+  border-radius: 12px;
+  color: #c4b5fd;
+  font-size: 18px;
+  text-decoration: none;
+  transition:
+    background 0.25s,
+    transform 0.25s;
+}
+
+.footer-social-links a:hover {
+  background: rgba(139, 92, 246, 0.16);
+  transform: translateY(-3px);
+}
+
+.footer-email {
+  display: inline-block;
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding-top: 22px;
+  border-top: 1px solid #202538;
+}
+
+.footer-bottom p {
+  margin: 0;
+  color: #858da1;
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.footer-back-top {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #c4b5fd;
+  font-size: 12px;
+  text-decoration: none;
+}
+
+.footer-back-top:hover {
+  color: #ffffff;
+}
+
+@media (max-width: 750px) {
+  .footer {
+    padding: 50px 6% 22px;
+  }
+
+  .footer-main {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 35px 25px;
+  }
+
+  .footer-brand {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 450px) {
+  .footer-main {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .footer-brand {
+    grid-column: auto;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
