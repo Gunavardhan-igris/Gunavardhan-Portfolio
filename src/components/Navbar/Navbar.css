@@ -210,7 +210,7 @@
 }
 
 /* ========================================
-   MOBILE MENU BUTTON
+   MOBILE MENU TOGGLE BUTTON
 ======================================== */
 
 .navbar-menu-button {
@@ -248,12 +248,54 @@
 }
 
 /* ========================================
-   MOBILE NAVIGATION
+   MOBILE BACKDROP OVERLAY
+======================================== */
+
+.mobile-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 998;
+  background: rgba(4, 7, 20, 0.72);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+/* ========================================
+   MOBILE NAVIGATION DROPDOWN
 ======================================== */
 
 .mobile-navbar {
-  display: none;
-  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  right: 0;
+  width: 100%;
+  max-height: calc(100vh - 100px);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+
+  padding: 12px;
+  border-radius: 16px;
+  border: 1px solid rgba(167, 139, 250, 0.22);
+
+  background: rgba(10, 13, 28, 0.94);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+
+  box-shadow:
+    0 16px 40px rgba(0, 0, 0, 0.5),
+    0 0 24px rgba(139, 92, 246, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+
+  z-index: 1001;
+}
+
+.mobile-navbar-links {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
 .mobile-navbar-link {
@@ -262,9 +304,7 @@
   justify-content: space-between;
   gap: 12px;
 
-  padding: 14px 12px;
-  margin: 2px 0;
-
+  padding: 13px 16px;
   border-radius: 10px;
 
   color: #a5aec6;
@@ -281,17 +321,23 @@
 .mobile-navbar-link:hover,
 .mobile-navbar-link.active {
   color: #ffffff;
-  background: rgba(139, 92, 246, 0.12);
+  background: rgba(139, 92, 246, 0.14);
+}
+
+.mobile-navbar-link.active {
+  color: #a78bfa;
+  font-weight: 600;
 }
 
 .mobile-navbar-link:hover {
-  padding-left: 17px;
+  padding-left: 20px;
 }
 
 .mobile-link-icon {
   color: #a78bfa;
-  opacity: 0;
-  transform: translate(-4px, 4px);
+  opacity: 0.6;
+  transform: translate(-2px, 2px);
+  font-size: 1.1rem;
 
   transition:
     opacity 0.25s ease,
@@ -304,14 +350,64 @@
   transform: translate(0, 0);
 }
 
+/* Mobile dropdown footer / Hire Me */
+.mobile-navbar-footer {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(167, 139, 250, 0.15);
+}
+
+.mobile-navbar-hire {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 13px;
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 11px;
+
+  background: linear-gradient(110deg, #9333ea, #6366f1 55%, #2563eb);
+  color: #ffffff;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+
+  box-shadow: 0 4px 18px rgba(124, 58, 237, 0.28);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.mobile-navbar-hire:hover {
+  filter: brightness(1.1);
+}
+
+.mobile-navbar-hire:active {
+  transform: scale(0.98);
+}
+
+/* ========================================
+   DESKTOP SCREEN RESET
+======================================== */
+
+@media (min-width: 851px) {
+  .mobile-navbar,
+  .mobile-backdrop,
+  .navbar-menu-button {
+    display: none !important;
+  }
+}
+
 /* ========================================
    TABLET
 ======================================== */
 
 @media (max-width: 1000px) {
   .navbar-container {
-    padding: 0 22px;
-    gap: 18px;
+    padding: 0 20px;
+    gap: 16px;
   }
 
   .navbar-links {
@@ -319,7 +415,7 @@
   }
 
   .navbar-link {
-    font-size: 0.84rem;
+    font-size: 0.86rem;
   }
 
   .navbar-logo {
@@ -327,15 +423,16 @@
   }
 
   .navbar-hire {
-    padding: 11px 14px;
+    padding: 10px 14px;
+    font-size: 0.86rem;
   }
 }
 
 /* ========================================
-   MOBILE
+   MOBILE & COMPACT TABLET BREAKPOINT
 ======================================== */
 
-@media (max-width: 760px) {
+@media (max-width: 850px) {
   .navbar {
     top: 8px;
     width: calc(100% - 24px);
@@ -344,7 +441,7 @@
   }
 
   .navbar-container {
-    min-height: 66px;
+    min-height: 64px;
     padding: 0 16px;
     gap: 12px;
   }
@@ -358,13 +455,17 @@
     display: inline-flex;
   }
 
-  .mobile-navbar {
-    display: flex;
-    flex-direction: column;
+  html {
+    scroll-padding-top: 90px;
+  }
 
-    padding: 8px 16px 16px;
-
-    border-top: 1px solid rgba(167, 139, 250, 0.14);
+  #home,
+  #about,
+  #skills,
+  #projects,
+  #resume,
+  #contact {
+    scroll-margin-top: 90px;
   }
 }
 
@@ -378,17 +479,27 @@
   }
 
   .navbar-container {
-    min-height: 62px;
+    min-height: 60px;
     padding: 0 12px;
   }
 
   .navbar-logo {
-    font-size: 1.4rem;
+    font-size: 1.35rem;
+  }
+
+  .mobile-navbar {
+    padding: 10px;
+    border-radius: 14px;
+  }
+
+  .mobile-navbar-link {
+    padding: 11px 12px;
+    font-size: 0.92rem;
   }
 }
 
 /* ========================================
-   ACCESSIBILITY
+   ACCESSIBILITY & SCROLL CONFIG
 ======================================== */
 
 @media (prefers-reduced-motion: reduce) {
